@@ -28,6 +28,8 @@ public class ClipService {
 
     public String getMedalKey() throws FourAVException {
 
+        logger.info( "Getting Medal Key" );
+
         String apiResponse = null, apiKey = null;
 
         apiResponse = medalResource.fetchMedalKey();
@@ -37,6 +39,8 @@ public class ClipService {
             throw new FourAVException(EMPTY_API_KEY_RECEIVED_CONTACT_MEDAL);
         }
         apiKey = extractKey(apiResponse);
+
+        logger.info( apiKey );
 
         return apiKey;
     }
