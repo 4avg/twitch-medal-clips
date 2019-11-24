@@ -1,0 +1,4 @@
+application:
+    api-key-url : https://developers.medal.tv/v1/generate_public_key
+    featured-video-url : https://developers.medal.tv/v1/latest?userId={userId}&limit={limit}
+    featured-video-limit : 1

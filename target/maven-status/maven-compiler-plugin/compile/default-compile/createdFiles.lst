@@ -1,0 +1,11 @@
+com\fourav\medal\conf\RestConfiguration.class
+com\fourav\medal\AppX.class
+com\fourav\medal\conf\FourAVException.class
+com\fourav\medal\util\Constants.class
+com\fourav\medal\util\MedalResponse.class
+com\fourav\medal\service\ClipService.class
+com\fourav\medal\util\MedalObject.class
+com\fourav\medal\api\ClipResource.class
+com\fourav\medal\util\MedalResource.class
+com\fourav\medal\util\ResponseObject.class
+com\fourav\medal\conf\ApplicationPropertiesConfiguration.class
