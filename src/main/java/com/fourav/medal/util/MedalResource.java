@@ -47,6 +47,7 @@ public class MedalResource {
         }
 
         try {
+            logger.info( "Calling the API Url " +apiKeyUrl );
             return restTemplate.getForObject(apiKeyUrl, String.class, new HashMap<String, String>());
         }
         catch (Exception e ){
@@ -71,6 +72,7 @@ public class MedalResource {
         HttpEntity<String> httpEntity = new HttpEntity<String>(headers);
 
         try {
+            logger.info( "Calling the Featured Video Url " +featuredVideoUrl );
             return restTemplate.exchange( featuredVideoUrl,HttpMethod.GET,httpEntity,MedalResponse.class, params ).getBody();
         }
         catch (Exception e ){
