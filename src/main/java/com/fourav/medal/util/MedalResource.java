@@ -46,14 +46,13 @@ public class MedalResource {
             throw new FourAVException(ERROR_GENERATING_API_KEY_INVALID_URL);
         }
 
-        try {
-            logger.info( "Calling the API Url " +apiKeyUrl );
-            return restTemplate.getForObject(apiKeyUrl, String.class, new HashMap<String, String>());
-        }
-        catch (Exception e ){
-            throw new FourAVException( e.getMessage() );
-        }
+        Map<String,String> params = new HashMap<String,String>();
 
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+        HttpEntity<String> httpEntity = new HttpEntity<String>(headers);
+
+        return restTemplate.exchange( apiKeyUrl,HttpMethod.GET,httpEntity,String.class, params ).getBody();
     }
 
     public MedalResponse fetchFeaturedVideo(String userId) throws FourAVException {
@@ -69,15 +68,9 @@ public class MedalResource {
 
         HttpHeaders headers = new HttpHeaders();
         headers.set( "authorization" ,  fetchMedalKey());
+        headers.set("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
         HttpEntity<String> httpEntity = new HttpEntity<String>(headers);
 
-        try {
-            logger.info( "Calling the Featured Video Url " +featuredVideoUrl );
-            return restTemplate.exchange( featuredVideoUrl,HttpMethod.GET,httpEntity,MedalResponse.class, params ).getBody();
-        }
-        catch (Exception e ){
-            throw new FourAVException( e.getMessage() );
-        }
-
+        return restTemplate.exchange( featuredVideoUrl,HttpMethod.GET,httpEntity,MedalResponse.class, params ).getBody();
     }
 }
